@@ -1,0 +1,22 @@
+<h3>基站状态监控</h3>
+<div class="status_list">
+
+  <ul class="clearfix">
+    <li *ngFor="let station of baseStationList" >
+      <button class="btn btn-primary" [class.warn]="station.status === 0" [class.error]="station.status === 3" (click)="changeBaseStation(station)"></button>
+    </li>
+  </ul>
+
+  <div class="choose_station_info">
+    <h4>当前基站信息</h4>
+    <div>
+      <label>id:</label>
+      <span>{{baseStation.id}}</span>
+    </div>
+    <div>
+      <label>status:</label>
+      <span>{{baseStation.status}}</span>
+    </div>
+    <button class="btn btn-default" (click)="toStationDetail()">查看详细信息</button>
+  </div>
+</div>
