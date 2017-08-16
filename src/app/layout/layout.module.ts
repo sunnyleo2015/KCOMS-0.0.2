@@ -12,8 +12,10 @@ import { RebirthNGModule } from 'rebirth-ng';
     RebirthNGModule,
   ],
   exports: [
-    LayoutComponent
+    LayoutComponent,
   ],
-  declarations: [LayoutComponent]
+  declarations: [
+    LayoutComponent,
+  ]
 })
 export class LayoutModule { }

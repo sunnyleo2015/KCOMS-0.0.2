@@ -17,6 +17,8 @@
       <label>status:</label>
       <span>{{baseStation.status}}</span>
     </div>
-    <button class="btn btn-default" (click)="toStationDetail()">查看详细信息</button>
+    <button class="btn btn-default" type="button" (click)="toStationDetail()">查看详细信息</button>
   </div>
 </div>
+<button class="btn btn-default" type="button" (click)="sideSetting.toggle()">toggle</button>
+<app-side-setting #sideSetting></app-side-setting>

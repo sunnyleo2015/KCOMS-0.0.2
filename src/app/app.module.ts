@@ -13,7 +13,7 @@ import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,7 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule,
   ],
   exports: [
-    LayoutModule
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

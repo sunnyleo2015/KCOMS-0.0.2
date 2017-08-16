@@ -2,6 +2,7 @@ import {Route, RouterModule} from '@angular/router';
 import {MainComponent} from './main.component';
 import {MonitorComponent} from './monitor/monitor.component';
 import {DetailComponent} from './detail/detail.component';
+import {SettingComponent} from './setting/setting.component';
 
 const ROUTER_CONFIG: Route[] = [
   {
@@ -15,6 +16,10 @@ const ROUTER_CONFIG: Route[] = [
       {
         path: 'detail',
         component: DetailComponent
+      },
+      {
+        path: 'setting',
+        component: SettingComponent
       }
     ],
   }

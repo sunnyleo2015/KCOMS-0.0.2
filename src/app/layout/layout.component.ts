@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuBar } from 'rebirth-ng/menu-bar/menu-bar.model';
+import { Router, ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-layout',
@@ -11,7 +13,7 @@ export class LayoutComponent implements OnInit {
   menu: MenuBar;
   sidebar: MenuBar;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.menu = {
@@ -27,6 +29,15 @@ export class LayoutComponent implements OnInit {
           text: '状态监控',
           icon: 'glyphicon glyphicon-eye-open',
           handler: () => {
+            this.router.navigate(['./main/monitor'])
+          },
+          cssClass: ''
+        },
+        {
+          text: '基站设置',
+          icon: 'glyphicon glyphicon-cog',
+          handler: () => {
+            this.router.navigate(['./main/setting'])
           },
           cssClass: ''
         }

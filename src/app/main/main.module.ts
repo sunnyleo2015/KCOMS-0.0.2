@@ -5,6 +5,11 @@ import { routing } from './main.route';
 import { MonitorComponent } from './monitor/monitor.component';
 import { RebirthNGModule } from 'rebirth-ng';
 import { DetailComponent } from './detail/detail.component';
+import { SettingComponent } from './setting/setting.component';
+import { SideSettingComponent } from './side-setting/side-setting.component';
+import { HightlightDirective } from '../directive/hightlight.directive';
+import { OutsideDirective } from '../directive/outside.directive';
+
 
 
 @NgModule({
@@ -14,14 +19,18 @@ import { DetailComponent } from './detail/detail.component';
     RebirthNGModule,
   ],
   exports: [
-    MonitorComponent
+    MonitorComponent,
   ],
   providers: [
   ],
   declarations: [
     MainComponent,
     MonitorComponent,
-    DetailComponent
+    DetailComponent,
+    SettingComponent,
+    SideSettingComponent,
+    HightlightDirective,
+    OutsideDirective
   ],
   entryComponents: [
     MainComponent

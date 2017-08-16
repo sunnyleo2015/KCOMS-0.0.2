@@ -1,0 +1,6 @@
+<div class="window clearfix" *ngIf="showSideSetting">
+  <div class="side-setting" [@sideSettingStatue]="sideSettingStatus"(appOutside)="hide()">
+    <p appHightlight>123123123123</p>
+  </div>
+  <div class="mask" *ngIf="showSideSetting"></div>
+</div>
