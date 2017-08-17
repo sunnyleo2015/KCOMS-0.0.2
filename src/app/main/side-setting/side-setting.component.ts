@@ -26,8 +26,8 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
   ]
 })
 export class SideSettingComponent implements OnInit {
-  showSideSetting:boolean = true;
-  sideSettingStatus = 'show';
+  showSideSetting:boolean = false;
+  sideSettingStatus = 'hide';
 
   constructor() { }
 
@@ -47,6 +47,5 @@ export class SideSettingComponent implements OnInit {
   hide(){
     this.showSideSetting = false;
     this.sideSettingStatus = 'hide';
-    console.log('1233');
   }
 }

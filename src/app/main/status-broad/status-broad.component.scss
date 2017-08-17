@@ -1,0 +1,39 @@
+:host{
+  ul{
+    margin: 20px 0;
+    li{
+      position: relative;
+      float: left;
+      width: 30px;
+      height: 30px;
+      background-color: #08c4f9;
+      overflow: hidden;
+      box-sizing: border-box;
+      box-shadow: 2px 2px 5px #000;
+
+    }
+    li:hover{
+      opacity: 0.8;
+      box-shadow: 0 0 0 #000;
+    }
+    button{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .warn {
+    background-color: #ffae00;
+  }
+  .ant-btn-danger {
+    color: #f7f7f7;
+    background-color: #f04134;
+    border-color: #f04134;
+  }
+  .checked {
+    opacity: 0.5;
+  }
+
+  .nz-right {
+    float: right;
+  }
+}

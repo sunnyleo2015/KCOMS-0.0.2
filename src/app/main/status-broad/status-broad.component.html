@@ -1,0 +1,123 @@
+<div class="status_row">
+  <nz-tag [nzColor]="'#ffae00'"><i class="anticon anticon-question-circle-o"></i> 警告: {{warn_number}} </nz-tag>
+  <nz-tag [nzColor]="'#f04134'"><i class="anticon anticon-exclamation-circle-o"></i> 错误: {{error_number}}</nz-tag>
+  <nz-radio-group [(ngModel)]="stationType">
+    <label nz-radio-button [nzValue]="'warnAndError'">
+      <span>异常基站</span>
+    </label>
+    <label nz-radio-button [nzValue]="'warn'">
+      <span>报警基站</span>
+    </label>
+    <label nz-radio-button [nzValue]="'error'">
+      <span>故障基站</span>
+    </label>
+    <label nz-radio-button [nzValue]="'normal'">
+      <span>正常基站</span>
+    </label>
+    <label nz-radio-button [nzValue]="'checked'">
+      <span>选中基站</span>
+    </label>
+    <label nz-radio-button [nzValue]="'all'">
+      <span>所有基站</span>
+    </label>
+  </nz-radio-group>
+
+  <nz-button-group class="nz-right" >
+    <button nz-button [nzType]="'default'" [disabled]="stationType === 'checked'" (click)="_checkedAll()">
+      全选
+    </button>
+    <button nz-button [nzType]="'default'" [disabled]="stationType === 'checked'" (click)="_toggleChecked()">
+      反选
+    </button>
+  </nz-button-group>
+</div>
+
+<!--所有基站-->
+<ul class="clearfix" *ngIf="stationType==='all'">
+  <li *ngFor="let station of stations" [ngSwitch]="station?.status">
+    <button nz-button [nzType]="'primary'"  *ngSwitchDefault (click)="changeBaseStation(station);_checked(station)">
+      <i *ngIf="station.checked" class="anticon anticon-check"></i>
+      <i *ngIf="!station.checked" class="anticon"></i>
+    </button>
+    <button nz-button [nzType]="'primary'"  *ngSwitchCase="0"  class="warn" (click)="changeBaseStation(station);_checked(station)">
+      <i *ngIf="station.checked" class="anticon anticon-check"></i>
+      <i *ngIf="!station.checked" class="anticon "></i>
+    </button>
+    <button nz-button [nzType]="'danger'"  *ngSwitchCase="3" class="error" (click)="changeBaseStation(station);_checked(station)">
+      <i *ngIf="station.checked" class="anticon anticon-check"></i>
+      <i *ngIf="!station.checked" class="anticon "></i>
+    </button>
+  </li>
+</ul>
+
+<!--选中基站-->
+<ul class="clearfix" *ngIf="stationType==='checked'">
+  <ng-container *ngFor="let station of stations">
+    <li *ngIf="station.checked" [ngSwitch]="station?.status">
+      <button nz-button [nzType]="'primary'"  *ngSwitchDefault (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon"></i>
+      </button>
+      <button nz-button [nzType]="'primary'"  *ngSwitchCase="0"  class="warn" (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon "></i>
+      </button>
+      <button nz-button [nzType]="'danger'"  *ngSwitchCase="3" class="error" (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon "></i>
+      </button>
+    </li>
+  </ng-container>
+</ul>
+
+<!--异常基站-->
+<ul class="clearfix" *ngIf="stationType==='warnAndError'">
+  <ng-container *ngFor="let station of stations">
+    <li *ngIf="station.status === 0 || station.status === 3" [ngSwitch]="station?.status">
+      <button nz-button [nzType]="'primary'"  *ngSwitchCase="0"  class="warn" (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon "></i>
+      </button>
+      <button nz-button [nzType]="'danger'"  *ngSwitchCase="3" class="error" (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon "></i>
+      </button>
+    </li>
+  </ng-container>
+</ul>
+
+<!--报警基站-->
+<ul class="clearfix" *ngIf="stationType==='warn'">
+  <ng-container *ngFor="let station of stations">
+    <li *ngIf="station.status === 0" [ngSwitch]="station?.status">
+      <button nz-button [nzType]="'primary'"  *ngSwitchCase="0"  class="warn" (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon "></i>
+      </button>
+    </li>
+  </ng-container>
+</ul>
+
+<!--故障基站-->
+<ul class="clearfix" *ngIf="stationType==='error'">
+  <ng-container *ngFor="let station of stations">
+    <li *ngIf="station.status === 3" [ngSwitch]="station?.status">
+      <button nz-button [nzType]="'danger'"  *ngSwitchCase="3" class="error" (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon "></i>
+      </button>
+    </li>
+  </ng-container>
+</ul>
+
+<!--正常基站-->
+<ul class="clearfix" *ngIf="stationType==='normal'">
+  <ng-container *ngFor="let station of stations">
+    <li *ngIf="station.status !== 0 && station.status !== 3" [ngSwitch]="station?.status">
+      <button nz-button [nzType]="'primary'"  *ngSwitchDefault (click)="changeBaseStation(station);_checked(station)">
+        <i *ngIf="station.checked" class="anticon anticon-check"></i>
+        <i *ngIf="!station.checked" class="anticon"></i>
+      </button>
+    </li>
+  </ng-container>
+</ul>

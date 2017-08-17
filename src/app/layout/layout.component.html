@@ -1,8 +1,32 @@
-<header>
+<!--<header>
   <re-menu-bar  [menuOptions]="menu" [type]="'navbar-fixed-top'"></re-menu-bar>
 </header>
 <re-menu-bar class="sideMeanBar clearfix" [menuOptions]="sidebar" [type]="'sidebar'"></re-menu-bar>
 
 <div class="page-window clearfix">
   <ng-content></ng-content>
-</div>
+</div>-->
+<nz-layout>
+  <nz-header>
+    <div class="logo"></div>
+  </nz-header>
+  <nz-layout>
+    <nz-sider [nzWidth]="200">
+      <ul nz-menu [nzMode]="'inline'" [nzTheme]="'dark'">
+        <li nz-menu-item>
+          <span title><i class="anticon anticon-eye-o"></i>状态监控</span>
+        </li>
+        <li nz-submenu>
+          <span title><i class="anticon anticon-setting"></i>基站设置</span>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-content>
+        <div class="content clearfix">
+          <ng-content></ng-content>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

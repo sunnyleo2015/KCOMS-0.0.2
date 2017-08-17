@@ -3,20 +3,23 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { routing } from './main.route';
 import { MonitorComponent } from './monitor/monitor.component';
-import { RebirthNGModule } from 'rebirth-ng';
 import { DetailComponent } from './detail/detail.component';
 import { SettingComponent } from './setting/setting.component';
 import { SideSettingComponent } from './side-setting/side-setting.component';
-import { HightlightDirective } from '../directive/hightlight.directive';
 import { OutsideDirective } from '../directive/outside.directive';
+import {NgZorroAntdModule } from 'ng-zorro-antd';
+import { FormsModule } from '@angular/forms';
+import { StationsTableComponent } from './stations-table/stations-table.component';
+import { StatusBroadComponent } from './status-broad/status-broad.component';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
+    NgZorroAntdModule,
+    FormsModule,
     routing,
-    RebirthNGModule,
   ],
   exports: [
     MonitorComponent,
@@ -29,8 +32,9 @@ import { OutsideDirective } from '../directive/outside.directive';
     DetailComponent,
     SettingComponent,
     SideSettingComponent,
-    HightlightDirective,
-    OutsideDirective
+    OutsideDirective,
+    StationsTableComponent,
+    StatusBroadComponent
   ],
   entryComponents: [
     MainComponent

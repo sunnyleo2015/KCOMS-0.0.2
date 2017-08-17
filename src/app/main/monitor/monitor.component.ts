@@ -1,34 +1,28 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-
+import * as _ from 'lodash';
 @Component({
   selector: 'app-monitor',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MonitorComponent implements OnInit {
-  baseStationList = []
-  baseStation = {id: '', status: 0};
+  baseStations = []
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    for(let i = 0; i<1000;i++){
-      this.baseStationList.push({
+    for(let i = 0; i<500;i++){
+      this.baseStations.push({
         id: `200017182-${i}`,
-        status: i%128
+        status: parseInt(`${Math.random()*4}`),
+        checked: false
       });
     }
-
-    this.baseStation = this.baseStationList[0];
-  }
-
-  changeBaseStation(station){
-    this.baseStation = station;
   }
 
   toStationDetail(){
-    this.router.navigate(['./main/detail',{'id': this.baseStation.id}]);
+    this.router.navigate(['./main/detail']);
   }
+
 }

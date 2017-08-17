@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { RebirthNGModule } from 'rebirth-ng';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing} from './app.route';
@@ -17,7 +16,7 @@ import { LayoutModule } from './layout/layout.module';
   ],
   imports: [
     BrowserModule,
-    RebirthNGModule.forRoot(),
+    NgZorroAntdModule.forRoot(),
     BrowserAnimationsModule,
     routing,
     LayoutModule,

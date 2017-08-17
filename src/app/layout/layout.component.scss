@@ -1,143 +1,38 @@
-:host /deep/{
-  .sideMeanBar nav{
-    top:64px;
-    left:0;
-  }
+:host {
+  .ant-layout-header {
+    background: #000000;
+    padding: 0 20px;
+    height: 64px;
+    line-height: 64px;
 
-  .menu-bar[_ngcontent-c2]  {
-    .logo[_ngcontent-c2] {
-      width: 150px ;
-      margin-top: -7px ;
+    .logo{
+      width: 170px;
+      height: 43px;
+      border-radius: 6px;
+      margin: 10px 28px 16px 0;
+      float: left;
+      background-size: 100% 100%;
+      box-sizing: border-box;
+      background-image: url("./../../assets/images/logo.png");
     }
   }
 
-  .navbar-default {
-    background-color: #000000;
-    margin-bottom: 0;
-    border-radius: 0;
+  .ant-menu-dark, .ant-menu-dark .ant-menu-sub {
+    background: #000;
   }
 
-  @media (min-width: 768px) {
-    [_nghost-c2] nav.sidebar .menu-icon{
-      float: right !important;
-      top: 4px;
-      margin-right: 0;
-    }
-    [_nghost-c2] nav.sidebar:hover .menu-icon{
-      float: inherit !important;
-      top: 1px;
-      margin-right: 15px;
-    }
+  .ant-layout-sider{
+    border-top: 5px solid #d7212a;
+    background: #000;
   }
 
-  @media (min-width: 992px) {
-    [_nghost-c2] nav.sidebar .menu-icon{
-      float: right !important;
-      top: 4px;
-      margin-right: 0;
-    }
-    [_nghost-c2] nav.sidebar:hover .menu-icon{
-      float: inherit !important;
-      top: 1px;
-      margin-right: 15px;
-    }
+  .ant-layout-content{
+    height: calc(100vh - 64px);
+    padding: 10px;
   }
 
-  @media (min-width: 1200px) {
-    [_nghost-c2] nav.sidebar .menu-icon{
-      float: right !important;
-      top: 4px;
-      margin-right: 0;
-    }
-    [_nghost-c2] nav.sidebar:hover .menu-icon{
-      float: inherit !important;
-      top: 1px;
-      margin-right: 15px;
-    }
+  .content {
+    padding: 24px;
+    background: #ffffff;
   }
-
-  @media (min-width: 1330px) {
-    [_nghost-c2] nav.sidebar .menu-icon{
-      float: inherit !important;
-      top: 1px;
-      margin-right: 15px;
-    }
-    [_nghost-c2] nav.sidebar:hover .menu-icon{
-      float: inherit !important;
-      top: 1px;
-      margin-right: 15px;
-    }
-  }
-
-  .navbar-default .navbar-nav > li > a{
-    color: #f0f0f0;
-  }
-
-  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
-    background-color: #a02329;
-    color: #f0f0f0;
-  }
-
-  nav.sidebar a{
-    color: #b8c7ce;
-    background-color: #0e0e0e;
-    padding: 10px 20px;
-  }
-
-  nav.sidebar a:hover{
-    color: #ffffff;
-    background-color: #1e282c;
-  }
-
-  [_nghost-c2] nav.sidebar .navbar-nav>li{
-    border: none;
-  }
-
-  [_nghost-c2] nav.sidebar .navbar-nav>li a{
-    border-left: 5px #0e0e0e solid;
-  }
-
-  [_nghost-c2] nav.sidebar .navbar-nav>li:hover>a{
-    border-left: 5px #a02329 solid;
-  }
-
-  [_nghost-c2] nav.sidebar .navbar-nav>li:first-child{
-    border-top: none;
-  }
-
-  [_nghost-c2]     nav.sidebar .forAnimate{
-    opacity: 1;
-  }
-
-  [_nghost-c1] [_nghost-c2] nav.sidebar .menu-icon{
-    margin-right: 20px;
-  }
-
-  [_nghost-c2] nav.sidebar li{
-    width: 200px;
-    overflow: hidden;
-  }
-
-  nav.sidebar[_ngcontent-c2]{
-    overflow: hidden;
-  }
-
-  .page-window{
-    position: relative;
-    top: 64px;
-    left: 40px;
-    width: calc(100vw - 40px);
-    padding: 0 30px;
-  }
-
-  @media (min-width: 1330px) {
-    .page-window{
-      left: 200px;
-      width: calc(100vw - 200px);
-      padding: 0 50px;
-    }
-  }
-
 }
-
-
