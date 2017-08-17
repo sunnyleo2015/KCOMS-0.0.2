@@ -1,9 +1,9 @@
 <h3>基站状态监控</h3>
 <div class="status_list">
-  <app-status-broad [stations]="baseStations"></app-status-broad>
-    <button nz-button [nzType]="'default'" type="button" (click)="toStationDetail();sideSetting.toggle()">查看详细信息</button>
-    <button nz-button [nzType]="'default'" type="button" (click)="sideSetting.toggle()">展开右侧</button>
+  <app-status-broad [stations]="baseStations" (refreshStarion)="refreshStation($event)"></app-status-broad>
+  <button nz-button [nzType]="'default'" type="button" (click)="toStationDetail();sideSetting.toggle()">查看详细信息</button>
+  <button nz-button [nzType]="'default'" type="button" (click)="sideSetting.toggle()">展开右侧</button>
 </div>
 
-<app-stations-table [station]="baseStations"></app-stations-table>
+<app-stations-table [station]="checkedStation"></app-stations-table>
 <app-side-setting #sideSetting></app-side-setting>

@@ -7,7 +7,9 @@ import * as _ from 'lodash';
   styleUrls: ['./monitor.component.scss'],
 })
 export class MonitorComponent implements OnInit {
+  connect: boolean;
   baseStations = []
+  checkedStation = [];
 
   constructor(private router: Router) { }
 
@@ -16,13 +18,17 @@ export class MonitorComponent implements OnInit {
       this.baseStations.push({
         id: `200017182-${i}`,
         status: parseInt(`${Math.random()*4}`),
-        checked: false
+        _checked: false
       });
     }
   }
 
   toStationDetail(){
     this.router.navigate(['./main/detail']);
+  }
+
+  refreshStation(stations){
+    this.checkedStation = stations;
   }
 
 }
