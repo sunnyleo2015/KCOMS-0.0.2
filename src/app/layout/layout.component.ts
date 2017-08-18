@@ -44,4 +44,8 @@ export class LayoutComponent implements OnInit {
       ]
     }
   }
+
+  toRouter(url){
+    this.router.navigate([url]);
+  }
 }

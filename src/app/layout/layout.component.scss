@@ -20,6 +20,9 @@
   .ant-menu-dark, .ant-menu-dark .ant-menu-sub {
     background: #000;
   }
+  .ant-menu.ant-menu-dark .ant-menu-item-selected{
+    background-color: inherit;
+  }
 
   .ant-layout-sider{
     border-top: 5px solid #d7212a;

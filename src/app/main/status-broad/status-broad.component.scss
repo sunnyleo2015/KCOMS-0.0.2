@@ -21,9 +21,7 @@
       height: 100%;
     }
   }
-  .warn {
-    background-color: #ffae00;
-  }
+
   .ant-btn-danger {
     color: #f7f7f7;
     background-color: #f04134;
@@ -35,5 +33,22 @@
 
   .nz-right {
     float: right;
+  }
+
+  .stations {
+    .ant-btn-primary{
+      background-color: #00a854;
+    }
+    .warn {
+      background-color: #ffae00;
+    }
+  }
+
+  .status-tips{
+    width: 100%;
+    margin-bottom: 10px;
+    nz-tag{
+      float: right;
+    }
   }
 }
