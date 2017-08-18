@@ -1,0 +1,72 @@
+<h3>同步控制器</h3>
+<div nz-form-item nz-row>
+  <div nz-form-label nz-col [nzSpan]="3">
+    <label>基站ID</label>
+  </div>
+  <div nz-form-control nz-col [nzSpan]="7">
+    <span nz-form-text>{{station?.id}}</span>
+  </div>
+  <div nz-form-label nz-col [nzSpan]="3">
+    <label>基站状态</label>
+  </div>
+  <div nz-form-control nz-col [nzSpan]="7">
+    <span nz-form-text>{{station?.status}}</span>
+  </div>
+</div>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+  <h4>module01 name</h4>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+      <label for="attr1" nz-form-item-required>attribute 01</label>
+    </div>
+    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback >
+      <nz-input [nzSize]="'large'" formControlName="attr1" [nzId]="'attr1'"></nz-input>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+      <label for="attr2">attribute 02</label>
+    </div>
+    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback >
+      <nz-input [nzSize]="'large'" formControlName="attr2" [nzId]="'attr2'"></nz-input>
+    </div>
+  </div>
+  <h4>module02 name</h4>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+      <label for="attr3" nz-form-item-required>attribute 03</label>
+    </div>
+    <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback >
+      <nz-input [nzSize]="'large'" formControlName="attr3" [nzId]="'attr3'"></nz-input>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="6">
+      <label nz-form-item-required>Select</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="14">
+      <nz-select formControlName="select" [nzSize]="'large'">
+        <nz-option [nzLabel]="'China'" [nzValue]="'China'"></nz-option>
+        <nz-option [nzLabel]="'U.S.A'" [nzValue]="'U.S.A'"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+  <div nz-form-item nz-row>
+    <div nz-form-label nz-col [nzSpan]="6">
+      <label>模式切换</label>
+    </div>
+    <div nz-form-control nz-col [nzSpan]="14">
+      <nz-radio-group formControlName="protocol_processing">
+        <label nz-radio-button [nzValue]="'00'">
+          <span>正常业务模式</span>
+        </label>
+        <label nz-radio-button [nzValue]="'01'">
+          <span>ofp加载模式</span>
+        </label>
+        <label nz-radio-button [nzValue]="'02'">
+          <span>ID重配置模式</span>
+        </label>
+      </nz-radio-group>
+    </div>
+  </div>
+</form>

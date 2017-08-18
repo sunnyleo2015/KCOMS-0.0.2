@@ -1,11 +1,20 @@
 <h3>基站状态监控</h3>
 <div class="status_list">
   <app-status-broad [stations]="baseStations" (refreshStarion)="refreshStation($event)"></app-status-broad>
-  <button nz-button [nzType]="'default'" type="button" (click)="toStationDetail();sideSetting.toggle()">查看详细信息</button>
-  <button nz-button [nzType]="'default'" type="button" (click)="sideSetting.toggle()">展开右侧</button>
+  <div class="clearfix">
+    <button class="open-monitor" nz-button [nzType]="'default'" type="button" >启动实时监控</button>
+    <div class="setting-btn-group clearfix" *ngIf="checkedTableItems.length>1">
+      <button nz-button [nzType]="'default'" type="button" (click)="startStations()">启动基站</button>
+      <button nz-button [nzType]="'default'" type="button" (click)="restartStations()">重启基站</button>
+      <button nz-button [nzType]="'danger'" type="button" (click)="closeStations()">关闭基站</button>
+      <button nz-button [nzType]="'primary'" type="button" (click)="settingStations();sideSetting.toggle()">设置基站</button>
+    </div>
+  </div>
 </div>
 
-<app-stations-table [station]="checkedStation"></app-stations-table>
+<app-stations-table [station]="checkedStation"
+                    (toDetail)="_stationSetting($event);sideSetting.show()"
+                    (refreshStation)="_refreshCheckedStation($event)"></app-stations-table>
 <app-side-setting #sideSetting>
-
+  <app-synchronous-form [station]="this.settingStation"></app-synchronous-form>
 </app-side-setting>

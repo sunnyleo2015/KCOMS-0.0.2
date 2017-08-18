@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-stations-table',
@@ -8,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class StationsTableComponent implements OnInit {
 
   @Input() station;
+  @Output() toDetail: EventEmitter<any> = new EventEmitter();
+  @Output() refreshStation: EventEmitter<any> = new EventEmitter();
 
   _allChecked = false;
   _indeterminate = false;
@@ -23,6 +26,9 @@ export class StationsTableComponent implements OnInit {
     const allUnChecked = this._checkedStation.every(value => !value.checked);
     this._allChecked = allChecked;
     this._indeterminate = (!allChecked) && (!allUnChecked);
+    let checkedStation = [];
+    _.forEach(this._checkedStation, (station)=>{ if(station.checked){checkedStation.push(station)}})
+    this.refreshStation.emit(checkedStation);
   };
 
   _checkAll(value) {
@@ -41,6 +47,10 @@ export class StationsTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  _toDetail(station){
+    this.toDetail.emit(station);
   }
 
 }

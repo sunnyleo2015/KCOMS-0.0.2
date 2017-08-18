@@ -10,6 +10,8 @@ export class MonitorComponent implements OnInit {
   connect: boolean;
   baseStations = []
   checkedStation = [];
+  settingStation;
+  checkedTableItems = [];
 
   constructor(private router: Router) { }
 
@@ -29,6 +31,30 @@ export class MonitorComponent implements OnInit {
 
   refreshStation(stations){
     this.checkedStation = stations;
+  }
+
+  _stationSetting(station){
+     this.settingStation = station;
+  }
+
+  _refreshCheckedStation(checkedStations){
+    this.checkedTableItems = checkedStations;
+  }
+
+  startStations(){
+    console.log(this.checkedTableItems);
+  }
+
+  restartStations(){
+    console.log(this.checkedTableItems);
+  }
+
+  closeStations(){
+    console.log(this.checkedTableItems);
+  }
+
+  settingStations(){
+    console.log(this.checkedTableItems);
   }
 
 }
