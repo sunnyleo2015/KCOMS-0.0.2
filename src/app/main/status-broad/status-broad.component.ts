@@ -33,7 +33,7 @@ export class StatusBroadComponent implements OnInit, OnChanges {
     this.error_number = this.error_station.length;
   }
 
-  _checked(station){
+  _toggle(station){
     if(station &&　station._checked){
       _.remove(this.checkedStations,(event)=>{
         return event.id === station.id;
@@ -45,46 +45,98 @@ export class StatusBroadComponent implements OnInit, OnChanges {
     this._refreshStation();
   }
 
+  _checked(station) {
+    station._checked = true;
+    this.checkedStations.unshift(station);
+    this._refreshStation();
+  }
+
+  _unchecked(station) {
+    station._checked = false;
+    _.remove(this.checkedStations,(event)=>{
+      return event.id === station.id;
+    })
+    this._refreshStation();
+  }
+
   _checkedAll(){
     switch (this.stationType){
       case 'warnAndError':
-        _.forEach(this.stations,(station)=>{if(station.status === 0 || station.status === 3){station._checked = true}});
+        _.forEach(this.stations,(station)=>{if(station.status === 0 || station.status === 3){this._checked(station);}});
         break;
       case 'warn':
-        _.forEach(this.stations,(station)=>{if(station.status === 0){station._checked = true}});
+        _.forEach(this.stations,(station)=>{if(station.status === 0){this._checked(station);}});
         break;
       case 'error':
-        _.forEach(this.stations,(station)=>{if(station.status === 3){station._checked = true}});
+        _.forEach(this.stations,(station)=>{if(station.status === 3){this._checked(station);}});
         break;
       case 'normal':
-        _.forEach(this.stations,(station)=>{if(station.status !== 0 && station.status !==3){station._checked = true}});
+        _.forEach(this.stations,(station)=>{if(station.status !== 0 && station.status !==3){this._checked(station);}});
         break;
       case 'all':
-        _.forEach(this.stations,(station)=>{station._checked = true});
+        _.forEach(this.stations,(station)=>{this._checked(station);});
         break;
     }
     this._refreshStation();
   }
 
+  _uncheckedAll(){
+    switch (this.stationType){
+      case 'warnAndError':
+        _.forEach(this.stations,(station)=>{if(station.status === 0 || station.status === 3){station._checked = false;}});
+        _.remove(this.checkedStations,(station)=>{
+          return station.status === 0 || station.status === 3;
+        });
+        this._refreshStation();
+        break;
+      case 'warn':
+        _.forEach(this.stations,(station)=>{if(station.status === 0){station._checked = false;}});
+        _.remove(this.checkedStations,(station)=>{
+          return station.status === 0;
+        });
+        this._refreshStation();
+        break;
+      case 'error':
+        _.forEach(this.stations,(station)=>{if(station.status === 3){station._checked = false;}});
+        _.remove(this.checkedStations,(station)=>{
+          return station.status === 3;
+        });
+        this._refreshStation();
+        break;
+      case 'normal':
+        _.forEach(this.stations,(station)=>{if(station.status !== 0 && station.status !==3){station._checked = false;}});
+        _.remove(this.checkedStations,(station)=>{
+          return station.status !== 0 && station.status !==3;
+        });
+        this._refreshStation();
+        break;
+      case 'all':
+        _.forEach(this.stations,(station)=>{station._checked = false;});
+        this.checkedStations = [];
+        this._refreshStation();
+        break;
+    }
+  }
+
+
   _toggleChecked(){
     switch (this.stationType){
       case 'warnAndError':
-        _.forEach(this.stations,(station)=>{if(station.status === 0 || station.status === 3){station._checked = !station._checked}});
+        _.forEach(this.stations,(station)=>{if(station.status === 0 || station.status === 3){ this._toggle(station);}});
         break;
       case 'warn':
-        _.forEach(this.stations,(station)=>{if(station.status === 0){station._checked = !station._checked}});
+        _.forEach(this.stations,(station)=>{if(station.status === 0){this._toggle(station);}});
         break;
       case 'error':
-        _.forEach(this.stations,(station)=>{if(station.status === 3){station._checked = !station._checked}});
+        _.forEach(this.stations,(station)=>{if(station.status === 3){this._toggle(station);}});
         break;
       case 'normal':
-        _.forEach(this.stations,(station)=>{if(station.status !== 0 && station.status !== 3){station._checked = !station._checked}});
+        _.forEach(this.stations,(station)=>{if(station.status !== 0 && station.status !== 3){this._toggle(station);}});
         break;
       case 'all':
-        _.forEach(this.stations,(station)=>{station._checked = !station._checked});
+        _.forEach(this.stations,(station)=>{this._toggle(station);});
         break;
     }
-    this._refreshStation();
   }
 
   _refreshStation(){
