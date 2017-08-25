@@ -3,6 +3,7 @@ import {MainComponent} from './main.component';
 import {MonitorComponent} from './monitor/monitor.component';
 import {DetailComponent} from './detail/detail.component';
 import {SettingComponent} from './setting/setting.component';
+import {ChartComponent} from './chart/chart.component';
 
 const ROUTER_CONFIG: Route[] = [
   {
@@ -20,6 +21,10 @@ const ROUTER_CONFIG: Route[] = [
       {
         path: 'setting',
         component: SettingComponent
+      },
+      {
+        path: 'echarts',
+        component: ChartComponent
       }
     ],
   }

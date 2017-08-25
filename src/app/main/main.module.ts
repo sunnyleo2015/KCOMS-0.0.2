@@ -14,6 +14,7 @@ import { StationsTableComponent } from './stations-table/stations-table.componen
 import { StatusBroadComponent } from './status-broad/status-broad.component';
 import { EditorComponent } from './editor/editor.component';
 import { SynchronousFormComponent } from './editor/synchronous-form/synchronous-form.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 
@@ -40,7 +41,8 @@ import { SynchronousFormComponent } from './editor/synchronous-form/synchronous-
     StationsTableComponent,
     StatusBroadComponent,
     EditorComponent,
-    SynchronousFormComponent
+    SynchronousFormComponent,
+    ChartComponent
   ],
   entryComponents: [
     MainComponent

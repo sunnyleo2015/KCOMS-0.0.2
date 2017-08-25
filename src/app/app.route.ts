@@ -9,7 +9,7 @@ const ROUTER_CONFIG: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    component: AppComponent,
+    redirectTo: '/main/monitor'
   },
   {
     path: 'main',
