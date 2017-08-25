@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { NzModalService } from 'ng-zorro-antd';
+import { StationService } from '../../service/station.service';
 
 import * as _ from 'lodash';
 @Component({
   selector: 'app-monitor',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.scss'],
+
 })
 export class MonitorComponent implements OnInit {
   connect: boolean;
@@ -15,16 +17,16 @@ export class MonitorComponent implements OnInit {
   settingStation;
   checkedTableItems = [];
 
-  constructor(private router: Router, private modal: NzModalService) { }
+  stationSub;
+
+  constructor(private router: Router, private modal: NzModalService, private stationService: StationService) { }
 
   ngOnInit() {
-    for(let i = 0; i<500;i++){
-      this.baseStations.push({
-        id: `200017182-${i}`,
-        status: parseInt(`${Math.random()*4}`),
-        _checked: false
-      });
-    }
+    this.stationService.getStationsStatus();
+
+    this.stationSub = this.stationService.baseStations.subscribe((res)=>{
+      this.baseStations = res;
+    });
   }
 
   toStationDetail(){
@@ -72,5 +74,9 @@ export class MonitorComponent implements OnInit {
       onCancel() {
       }
     })
+  }
+
+  ngOnDestroy(){
+    this.stationSub.unsubscribe();
   }
 }

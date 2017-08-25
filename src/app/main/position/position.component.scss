@@ -1,0 +1,11 @@
+:host{
+  .map{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    overflow: auto;
+    height: calc(100vh - 100px);
+  }
+}

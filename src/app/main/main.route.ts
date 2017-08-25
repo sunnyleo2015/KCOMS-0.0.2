@@ -4,6 +4,7 @@ import {MonitorComponent} from './monitor/monitor.component';
 import {DetailComponent} from './detail/detail.component';
 import {SettingComponent} from './setting/setting.component';
 import {ChartComponent} from './chart/chart.component';
+import {PositionComponent} from './position/position.component';
 
 const ROUTER_CONFIG: Route[] = [
   {
@@ -25,6 +26,10 @@ const ROUTER_CONFIG: Route[] = [
       {
         path: 'echarts',
         component: ChartComponent
+      },
+      {
+        path: 'position',
+        component: PositionComponent
       }
     ],
   }

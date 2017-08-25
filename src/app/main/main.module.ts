@@ -15,6 +15,11 @@ import { StatusBroadComponent } from './status-broad/status-broad.component';
 import { EditorComponent } from './editor/editor.component';
 import { SynchronousFormComponent } from './editor/synchronous-form/synchronous-form.component';
 import { ChartComponent } from './chart/chart.component';
+import { PositionComponent } from './position/position.component';
+
+
+import { StationService } from '../service/station.service';
+import { MethodService } from  '../service/method.service';
 
 
 
@@ -30,6 +35,8 @@ import { ChartComponent } from './chart/chart.component';
     MonitorComponent,
   ],
   providers: [
+    StationService,
+    MethodService
   ],
   declarations: [
     MainComponent,
@@ -42,7 +49,8 @@ import { ChartComponent } from './chart/chart.component';
     StatusBroadComponent,
     EditorComponent,
     SynchronousFormComponent,
-    ChartComponent
+    ChartComponent,
+    PositionComponent
   ],
   entryComponents: [
     MainComponent
