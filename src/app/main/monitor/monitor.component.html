@@ -2,7 +2,7 @@
 <div class="status_list">
   <app-status-broad [stations]="baseStations" (refreshStarion)="refreshStation($event)"></app-status-broad>
   <div class="clearfix">
-    <button class="open-monitor" nz-button [nzType]="'default'" type="button" >启动实时监控</button>
+    <button class="open-monitor" nz-button [nzType]="'default'" type="button" (click)="showRenderModal()">启动实时监控</button>
     <div class="setting-btn-group clearfix" *ngIf="checkedTableItems.length>1">
       <button nz-button [nzType]="'default'" type="button" (click)="startStations()">启动基站</button>
       <button nz-button [nzType]="'default'" type="button" (click)="restartStations()">重启基站</button>

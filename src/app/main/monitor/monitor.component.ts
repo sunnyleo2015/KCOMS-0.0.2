@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import { NzModalService } from 'ng-zorro-antd';
+
 import * as _ from 'lodash';
 @Component({
   selector: 'app-monitor',
@@ -13,7 +15,7 @@ export class MonitorComponent implements OnInit {
   settingStation;
   checkedTableItems = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private modal: NzModalService) { }
 
   ngOnInit() {
     for(let i = 0; i<500;i++){
@@ -57,4 +59,18 @@ export class MonitorComponent implements OnInit {
     console.log(this.checkedTableItems);
   }
 
+
+  showRenderModal(){
+    const modal = this.modal.confirm({
+      title   : '是否启动监测',
+      content : '立即启动基站监控？',
+      okText: '启动',
+      closable: false,
+      onOk() {
+        console.log('ok')
+      },
+      onCancel() {
+      }
+    })
+  }
 }
