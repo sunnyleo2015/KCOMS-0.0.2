@@ -58,7 +58,7 @@ export class PositionComponent implements OnInit {
   initRenderer(){
     this.renderer =  new THREE.WebGLRenderer();
     this.renderer.setSize(1280, 800);
-    this.renderer.setClearColor(0xFFFFFF);
+    this.renderer.setClearColor(0xf5f5f5);
     this.mapGL.nativeElement.append(this.renderer.domElement);
   }
 
@@ -202,6 +202,7 @@ export class PositionComponent implements OnInit {
         this.initReader(reader);
       });
 
+      console.log(this.readerList);
       this.createNotification('success', '连接成功', '已连接websocket并获取基站定位数据');
     };
   }
