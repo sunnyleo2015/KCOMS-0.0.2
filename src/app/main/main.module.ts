@@ -36,7 +36,7 @@ import { MethodService } from  '../service/method.service';
   ],
   providers: [
     StationService,
-    MethodService
+    MethodService,
   ],
   declarations: [
     MainComponent,

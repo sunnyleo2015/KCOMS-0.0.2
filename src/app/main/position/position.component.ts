@@ -3,11 +3,13 @@ import { MethodService } from '../../service/method.service';
 import * as _ from 'lodash';
 import * as THREE from 'three';
 import * as Trackballcontrols from 'three-trackballcontrols';
+import {NzNotificationService} from 'ng-zorro-antd';
+
 
 @Component({
   selector: 'app-position',
   templateUrl: './position.component.html',
-  styleUrls: ['./position.component.scss']
+  styleUrls: ['./position.component.scss'],
 })
 export class PositionComponent implements OnInit {
 
@@ -31,19 +33,26 @@ export class PositionComponent implements OnInit {
 
   readerList:any[] = [];
 
-  constructor(private method: MethodService) { }
+  constructor(private method: MethodService, private notification: NzNotificationService) { }
 
   ngOnInit() {
     this.initDraw();
     this.connectManager();
   }
 
+  createNotification(type, title, content){
+    this.notification.create(type, title, content);
+  };
+
   connectManager(){
     this.manager = new WebSocket("ws://127.0.0.1:8888");
     this.manager.onmessage = (res)=>{
-      console.log(res);
     };
-    setTimeout(()=>{this.getLocalizeInfo()}, 100);
+    this.manager.onerror = (error)=>{
+      console.log(error);
+      this.createNotification('error', '连接失败', '连接websocket失败');
+    };
+    setTimeout(()=>{this.getLocalizeInfo();},100);
   }
 
   initRenderer(){
@@ -192,6 +201,8 @@ export class PositionComponent implements OnInit {
       _.forEach(this.readerList,(reader)=>{
         this.initReader(reader);
       });
+
+      this.createNotification('success', '连接成功', '已连接websocket并获取基站定位数据');
     };
   }
 

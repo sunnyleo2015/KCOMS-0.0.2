@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { NgZorroAntdModule, NZ_NOTIFICATION_CONFIG } from 'ng-zorro-antd';
 import { AppComponent } from './app.component';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { routing} from './app.route';
-
 import { LayoutModule } from './layout/layout.module';
 
 
@@ -16,15 +15,19 @@ import { LayoutModule } from './layout/layout.module';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     NgZorroAntdModule.forRoot(),
     BrowserAnimationsModule,
     routing,
     LayoutModule,
+    HttpModule,
   ],
   exports: [
     LayoutModule,
   ],
-  providers: [],
+  providers: [
+    { provide: NZ_NOTIFICATION_CONFIG, useValue: { nzTop: '75px', nzRight: '-15px'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
