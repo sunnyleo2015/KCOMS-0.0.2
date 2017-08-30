@@ -1,12 +1,14 @@
 <ng-container *ngIf="station && station.length > 0 ">
-  <nz-table #nzTable [nzDataSource]="station" [nzPageSize]="10" [nzBordered]="true" (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
+  <nz-table #nzTable
+            [nzDataSource]="station" [nzPageSize]="10" [nzBordered]="true" [nzShowSizeChanger]="true" [nzShowQuickJumper]="true"
+            (nzDataChange)="_displayDataChange($event)" (nzPageIndexChange)="_refreshStatus()" (nzPageSizeChange)="_refreshStatus()">
     <thead nz-thead >
       <tr class="text-center">
         <th nz-th [nzCheckbox]="true">
           <label nz-checkbox [(ngModel)]="_allChecked" [nzIndeterminate]="_indeterminate" (ngModelChange)="_checkAll($event)">
           </label>
         </th>
-        <th nz-th><span>ID</span></th>
+        <th nz-th><span>ID <nz-table-sort [(nzValue)]="idSort" (nzValueChange)="idSortChange($event)"></nz-table-sort></span></th>
         <th nz-th><span>基站状态</span></th>
         <th nz-th><span>操作</span></th>
         <th nz-th class="text-center"><span>定位</span></th>
@@ -29,7 +31,7 @@
           <button nz-button [nzType]="'primary'" (click)="_toDetail(data)">配置</button>
         </td>
         <td nz-td class="text-center">
-            <i class="anticon anticon-environment"></i>
+          <a href="main/monitor#position"><i class="anticon anticon-environment"></i></a>
         </td>
       </tr>
     </tbody>

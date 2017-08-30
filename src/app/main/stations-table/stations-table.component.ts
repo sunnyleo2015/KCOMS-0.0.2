@@ -12,6 +12,7 @@ export class StationsTableComponent implements OnInit {
   @Output() toDetail: EventEmitter<any> = new EventEmitter();
   @Output() refreshStation: EventEmitter<any> = new EventEmitter();
 
+  idSort = false;
   _allChecked = false;
   _indeterminate = false;
   _checkedStation = [];
@@ -43,6 +44,18 @@ export class StationsTableComponent implements OnInit {
     }
     this._refreshStatus();
   };
+
+  idSortChange($event) {
+    if ($event === 'ascend') {
+      this.station = _.sortBy(this.station, (station)=> {
+        return station.id
+      });
+    } else if ($event === 'descend') {
+      this.station = _.sortBy(this.station, (station)=> {
+        return -station.id
+      });
+    }
+  }
 
   constructor() { }
 

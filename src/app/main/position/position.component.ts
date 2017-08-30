@@ -157,6 +157,27 @@ export class PositionComponent implements OnInit {
     this.trackBallControls.panSpeed = 1.0;
   }
 
+  initFont(){
+    let canvas = document.createElement('canvas');
+    let context = canvas.getContext('2d');
+    context.font = "Bold 40px Arial";
+    context.fillStyle = "rgba(255,0,0,0.95)";
+    context.fillText('中电昆辰', 0, 50);
+    let texture = new THREE.Texture(canvas)
+    texture.needsUpdate = true;
+
+    let material = new THREE.MeshBasicMaterial( {map: texture, side:THREE.DoubleSide } );
+    material.transparent = true;
+
+    let mesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(canvas.width, canvas.height),
+      material
+    );
+    mesh.position.set(0,50,1);
+
+    this.scene.add(mesh);
+  }
+
   doRender(){
     this.trackBallControls.noZoom  = this.noZoom;
     this.trackBallControls.noRotate = this.noRotate;
@@ -173,6 +194,7 @@ export class PositionComponent implements OnInit {
     this.initScene();
     this.initLight();
     this.initFrame();
+    this.initFont();
     this.initTrackBallControls();
     this.doRender();
   }
@@ -200,6 +222,7 @@ export class PositionComponent implements OnInit {
       });
       _.forEach(this.readerList,(reader)=>{
         this.initReader(reader);
+        this.initReaderFont(reader);
       });
 
       console.log(this.readerList);
@@ -214,6 +237,25 @@ export class PositionComponent implements OnInit {
     let readerLabel = new THREE.Mesh(readerGeometry,readerMaterial);
 
     readerLabel.name = `reader-${reader.id}`;
+    readerLabel.position.set(reader.x,reader.y,reader.z);
+    this.scene.add(readerLabel);
+  }
+
+  initReaderFont(reader){
+    let canvas = document.createElement('canvas');
+    let context = canvas.getContext('2d');
+    context.font = "Bold 24px Arial";
+    context.fillStyle = "rgba(255,0,0,0.95)";
+    context.fillText(`${reader.id}`, canvas.width/2+5, canvas.height/2+5, 200);
+    let texture = new THREE.Texture(canvas);
+    texture.needsUpdate = true;
+
+    let readerMaterial = new THREE.MeshBasicMaterial({map: texture});
+    readerMaterial.transparent=true;
+
+    let readerLabel = new THREE.Mesh(new THREE.PlaneGeometry(canvas.width,canvas.height) ,readerMaterial);
+
+    readerLabel.name = `font-${reader.id}`;
     readerLabel.position.set(reader.x,reader.y,reader.z);
 
     this.scene.add(readerLabel);

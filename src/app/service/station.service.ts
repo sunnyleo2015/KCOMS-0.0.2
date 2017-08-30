@@ -14,7 +14,7 @@ export class StationService {
     let stations = [];
     for(let i = 0; i<500;i++){
       stations.push({
-        id: `200017182-${i}`,
+        id: i,
         status: parseInt(`${Math.random()*4}`),
         _checked: false
       });
